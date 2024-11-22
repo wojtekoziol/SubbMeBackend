@@ -1,6 +1,5 @@
 package com.wojciechkoziol.SubbMeBackend.auth;
 
-import com.wojciechkoziol.SubbMeBackend.auth.dto.AuthResponseDTO;
 import com.wojciechkoziol.SubbMeBackend.auth.dto.UserDTO;
 import com.wojciechkoziol.SubbMeBackend.auth.role.Role;
 import com.wojciechkoziol.SubbMeBackend.auth.role.RoleRepository;
@@ -31,7 +30,7 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
     private TokenService tokenService;
 
-    public AuthResponseDTO registerUser(String email, String password, String firstName, String lastName) {
+    public UserDTO registerUser(String email, String password, String firstName, String lastName) {
         if (email.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty()) {
             throw new IllegalStateException("Email, password, firstName nor lastName cannot be empty");
         }
@@ -55,7 +54,7 @@ public class AuthService {
         return loginUser(email, password);
     }
 
-    public AuthResponseDTO loginUser(String email, String password) {
+    public UserDTO loginUser(String email, String password) {
         try {
             Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email, password)
@@ -69,7 +68,7 @@ public class AuthService {
             }
 
             AppUser user =  userOptional.get();
-            return new AuthResponseDTO(new UserDTO(user), token);
+            return new UserDTO(user, token);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username or password");
         }
