@@ -39,4 +39,9 @@ public class SubscriptionController {
         Subscription updated = subscriptionService.updateSubscription(id, subscription);
         return new SubscriptionResponseDTO(updated);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteSubscription(@PathVariable Long id) {
+        subscriptionService.deleteSubscription(id);
+    }
 }

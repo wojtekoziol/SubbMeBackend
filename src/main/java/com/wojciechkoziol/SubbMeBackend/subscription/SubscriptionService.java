@@ -5,6 +5,7 @@ import com.wojciechkoziol.SubbMeBackend.auth.user.UserRepository;
 import com.wojciechkoziol.SubbMeBackend.subscription.dto.SubscriptionDTO;
 import com.wojciechkoziol.SubbMeBackend.subscription.dto.SubscriptionResponseDTO;
 import com.wojciechkoziol.SubbMeBackend.subscription.models.Subscription;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,10 @@ public class SubscriptionService {
         subscription.setWebsiteURL(subscriptionDTO.getWebsiteURL());
 
         return subscriptionRepository.save(subscription);
+    }
+
+    @Transactional
+    public void deleteSubscription(Long id) {
+        subscriptionRepository.deleteById(id);
     }
 }

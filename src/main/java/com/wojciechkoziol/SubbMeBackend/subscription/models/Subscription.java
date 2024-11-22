@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "subscriptions")
@@ -28,7 +30,9 @@ public class Subscription {
     private Double dateEndingAsInterval;
     @Column(name = "website_url")
     private String websiteURL;
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AppUser user;
 
     public Subscription(String name, SubscriptionType type, Double price, String currencyCode, Double dateStartedAsInterval, Double dateEndingAsInterval, String websiteURL, AppUser user) {
