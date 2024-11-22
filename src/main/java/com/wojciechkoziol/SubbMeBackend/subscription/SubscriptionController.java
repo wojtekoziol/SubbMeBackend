@@ -33,4 +33,10 @@ public class SubscriptionController {
         Subscription newSubscription = subscriptionService.createSubscription(user, subscription);
         return new SubscriptionResponseDTO(newSubscription);
     }
+
+    @PutMapping("/{id}")
+    public SubscriptionResponseDTO updateSubscription(@PathVariable Long id, @RequestBody SubscriptionDTO subscription) {
+        Subscription updated = subscriptionService.updateSubscription(id, subscription);
+        return new SubscriptionResponseDTO(updated);
+    }
 }

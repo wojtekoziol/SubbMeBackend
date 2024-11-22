@@ -8,5 +8,5 @@ import java.util.Set;
 
 @Repository
 public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
-    public Set<Subscription> findByUserId(Long userId);
+    Set<Subscription> findByUserId(Long userId);
 }

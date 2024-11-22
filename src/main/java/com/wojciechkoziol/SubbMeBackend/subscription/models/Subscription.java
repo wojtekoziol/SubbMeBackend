@@ -28,7 +28,7 @@ public class Subscription {
     private Double dateEndingAsInterval;
     @Column(name = "website_url")
     private String websiteURL;
-    @OneToOne()
+    @ManyToOne(optional = false)
     private AppUser user;
 
     public Subscription(String name, SubscriptionType type, Double price, String currencyCode, Double dateStartedAsInterval, Double dateEndingAsInterval, String websiteURL, AppUser user) {

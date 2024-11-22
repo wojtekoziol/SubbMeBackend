@@ -1,7 +1,9 @@
 package com.wojciechkoziol.SubbMeBackend.subscription.dto;
 
 import com.wojciechkoziol.SubbMeBackend.subscription.models.Subscription;
+import lombok.Getter;
 
+@Getter
 public class SubscriptionResponseDTO extends SubscriptionDTO{
 
     private final Long id;
