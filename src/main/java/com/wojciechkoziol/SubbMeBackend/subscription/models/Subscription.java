@@ -30,12 +30,14 @@ public class Subscription {
     private Double dateEndingAsInterval;
     @Column(name = "website_url")
     private String websiteURL;
+    @Column(name = "reminder_days")
+    private Integer reminderDays;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private AppUser user;
 
-    public Subscription(String name, SubscriptionType type, Double price, String currencyCode, Double dateStartedAsInterval, Double dateEndingAsInterval, String websiteURL, AppUser user) {
+    public Subscription(String name, SubscriptionType type, Double price, String currencyCode, Double dateStartedAsInterval, Double dateEndingAsInterval, String websiteURL, Integer reminderDays, AppUser user) {
         this.name = name;
         this.type = type;
         this.price = price;
@@ -54,5 +56,6 @@ public class Subscription {
         this.dateStartedAsInterval = subscriptionDTO.getDateStartedAsInterval();
         this.dateEndingAsInterval = subscriptionDTO.getDateEndingAsInterval();
         this.websiteURL = subscriptionDTO.getWebsiteURL();
+        this.reminderDays = subscriptionDTO.getReminderDays();
     }
 }

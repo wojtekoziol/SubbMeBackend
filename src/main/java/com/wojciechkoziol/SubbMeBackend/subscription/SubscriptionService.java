@@ -40,6 +40,7 @@ public class SubscriptionService {
         subscription.setDateStartedAsInterval(subscriptionDTO.getDateStartedAsInterval());
         subscription.setDateEndingAsInterval(subscriptionDTO.getDateEndingAsInterval());
         subscription.setWebsiteURL(subscriptionDTO.getWebsiteURL());
+        subscription.setReminderDays(subscriptionDTO.getReminderDays());
 
         return subscriptionRepository.save(subscription);
     }

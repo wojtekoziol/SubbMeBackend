@@ -10,7 +10,7 @@ public class SubscriptionResponseDTO extends SubscriptionDTO{
 
     public SubscriptionResponseDTO(Subscription subscription) {
         super(subscription.getName(), subscription.getType(), subscription.getPrice(), subscription.getCurrencyCode(),
-                subscription.getDateStartedAsInterval(), subscription.getDateEndingAsInterval(), subscription.getWebsiteURL());
+                subscription.getDateStartedAsInterval(), subscription.getDateEndingAsInterval(), subscription.getWebsiteURL(), subscription.getReminderDays());
         this.id = subscription.getId();
     }
 }

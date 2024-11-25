@@ -14,4 +14,5 @@ public class SubscriptionDTO {
     private Double dateStartedAsInterval;
     private Double dateEndingAsInterval;
     private String websiteURL;
+    private Integer reminderDays;
 }
